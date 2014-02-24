@@ -1,0 +1,31 @@
+{
+  "name": "angular-formatter-parser",
+  "version": "0.1.0",
+  "authors": [
+    "Rand McNeely <loosebits@gmail.com>"
+  ],
+  "description": "Angular formatter and parser framework",
+  "license": "MIT",
+  "homepage": "https://github.com/loosebits/angular-formatter-parser",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/loosebits/angular-formatter-parser.git"
+  },
+  "main": "./dist/angular-formatter-parser.min.js",
+  "ignore": [
+    "**/.*",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json",
+    "test",
+    "src",
+    ".travis.yml"
+  ],
+  "dependencies": {
+    "angular-inflector": "*"
+  },
+  "devDependencies": {
+    "angular": "*",
+    "angular-mocks": "*"
+  }
+}
