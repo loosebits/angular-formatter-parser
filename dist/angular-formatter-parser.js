@@ -1,6 +1,6 @@
 /**
  * Angular formatter and parser framework
- * @version v0.1.0 - 2014-02-25
+ * @version v0.1.1 - 2014-03-01
  * @link https://github.com/loosebits/angular-formatter-parser
  * @author Rand McNeely <loosebits@gmail.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -23,9 +23,7 @@ function createFunction($inflector, $injector, $parse, scope, ctrl, name, isPars
         if (!angular.isArray(args)) {
             args = [args];
         }
-        if (isParser) {
-            args.unshift(ctrl);
-        }
+        args.unshift(ctrl);
         args.unshift(viewValue);
         return dsc.fun.apply(null, args);
     };

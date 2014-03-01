@@ -13,9 +13,7 @@ function createFunction($inflector, $injector, $parse, scope, ctrl, name, isPars
         if (!angular.isArray(args)) {
             args = [args];
         }
-        if (isParser) {
-            args.unshift(ctrl);
-        }
+        args.unshift(ctrl);
         args.unshift(viewValue);
         return dsc.fun.apply(null, args);
     };
