@@ -1,4 +1,4 @@
-function createFunction($inflector, $injector, $parse, scope, ctrl, name, isParser) {
+function createFunction($inflector, $injector, $parse, scope, ctrl, name, isParser, element) {
     var m = name.match(/^\s*(.+)\s*$/i);
     var dsc = {};
     if(!m || !m[1]) return; // TODO: throw.
@@ -13,6 +13,7 @@ function createFunction($inflector, $injector, $parse, scope, ctrl, name, isPars
         if (!angular.isArray(args)) {
             args = [args];
         }
+        args.unshift(element);
         args.unshift(ctrl);
         args.unshift(viewValue);
         return dsc.fun.apply(null, args);
@@ -27,7 +28,7 @@ angular.module('loosebits.formatParse',['platanus.inflector'])
         priority: -1,
         require: 'ngModel',
         link: function(scope, element, attrs, ctrl) {
-                var formatter = createFunction($inflector, $injector, $parse, scope, ctrl, attrs.fpFormat, false);
+                var formatter = createFunction($inflector, $injector, $parse, scope, ctrl, attrs.fpFormat, false, element);
                 ctrl.$formatters.push(formatter);
             }
     };
@@ -38,7 +39,7 @@ angular.module('loosebits.formatParse',['platanus.inflector'])
         restrict: 'AC',
         require: 'ngModel',
         link: function(scope, element, attrs, ctrl) {
-                var parser = createFunction($inflector, $injector, $parse, scope, ctrl, attrs.fpParse, true);
+                var parser = createFunction($inflector, $injector, $parse, scope, ctrl, attrs.fpParse, true, element);
                 ctrl.$parsers.push(parser);
             }
     };
